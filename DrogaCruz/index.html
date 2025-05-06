@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmácia DrogaCruz</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="img/logo.png" alt="DrogaCruz"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="pesquisa" placeholder="Buscar produtos..." onkeyup="buscarProduto()">
+            <button class="search-button">
+                <img src="img/lupa.png" alt="Buscar">
+            </button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#Medicamentos">Medicamentos</a></li>
+                <li><a href="#Cuidadospessoais">Cuidados Pessoais</a></li>
+                <li><a href="#Vitaminas">Vitaminas</a></li>
+                <li><a href="#Perfumes">Perfumes</a></li>
+                <li><a href="#" onclick="abrirCarrinho()">Carrinho (<span id="contador">0</span>)</a></li>
+                <!-- <li><a href="#" onclick="abrirLogin()">Login</a></li> TESTE -->
+            </ul>
+
+            
+            <div class="Login" id="login-cadastro">
+                <!-- Ícone de login (novo) -->
+                <a href="#" class="box-item" id="loginIcon"><i class='bx bx-user'></i></a>
+              
+                <!-- Área de login/cadastro (inicialmente oculta) -->
+                <div id="loginContainer" class="hidden">
+                  <div id="loginForm">
+                    <h2>Login</h2>
+                    <input type="text" id="loginUser" placeholder="Usuário">
+                    <input type="password" id="loginPassword" placeholder="Senha">
+                    <button onclick="login()">Entrar</button>
+                  </div>
+              
+                  <div id="registerForm" class="hidden">
+                    <h2>Cadastro</h2>
+                    <input type="text" id="newUser" placeholder="Novo usuário">
+                    <input type="password" id="newPassword" placeholder="Nova senha">
+                    <button onclick="register()">Cadastrar</button>
+                  </div>
+              
+                  <p id="message"></p>
+                </div>
+              </div>
+
+        </nav>
+    </header>
+    <main>
+
+        <div class="banner"  id="carrossel-banner">
+            <div class="carrossel" >
+                <div class="container1 carrossel-container">
+                    <div class="slide">
+                        <a href="#Vitaminas">
+                            <img src="img/vitaminas.png" alt="Imagem 1">
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a href="vacina2.html">
+                            <img src="img/vacina.png" alt="Promoção">
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a href="#Perfumes">
+                            <img src="img/perfumes.png" alt="Vacina">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <section class="produtos">
+            <div id="Medicamentos" class="medicamentos"><h2>Medicamentos</h2></div>
+            <div class="container">
+                <div class="produto" data-nome="Paracetamol">
+                    <img src="img/paracetamol.png" alt="Paracetamol">
+                    <h3><a href="paracetamol.html">Paracetamol 750mg C/20</a></h3>
+                    <p>Alívio para dores e febre.</p>
+                    <span>R$ 10,99</span>
+                    <button onclick="adicionarCarrinho('Paracetamol', 10.99)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Tadalafila">
+                    <img src="img/tadalafila.png" alt="Tadalafila">
+                    <h3><a href="tadalafila.html">Tadalafila 20mg C/4</a></h3>
+                    <p>Tratamento da disfunção erétil.</p>
+                    <span>R$ 10,69</span>
+                    <button onclick="adicionarCarrinho('Tadalafila', 10.69)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Levonorgestrel">
+                    <img src="img/levonorgestrel.png" alt="Levonorgestrel">
+                    <h3><a href="levonorgestrel.html">Levonorgestrel 1,5mg C/1</a></h3>
+                    <p>Prevenção de gravidez.</p>
+                    <span>R$ 19,99</span>
+                    <button onclick="adicionarCarrinho('Levonorgestrel', 19.99)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Loratadina">
+                    <img src="img/loratadina.png" alt="Loratadina">
+                    <h3><a href="loratadina.html">Loratadina 10mg C/12</a></h3>
+                    <p>Alívio com a rinite alérgica, espirros e coceira nos olhos.</p>
+                    <span>R$ 11,99</span>
+                    <div class="loratadina">
+                    <button onclick="adicionarCarrinho('Loratadina', 11.99)">Comprar</button>
+                    </div>
+                </div>
+
+                <div class="produto" data-nome="Xarope">
+                    <img src="img/xarope.png" alt="Xarope">
+                    <h3><a href="xarope.html">Maleato de Bronfeniramina 2mg + Cloridrato de Fenilefrina 5mg Xarope 120ml</a></h3>
+                    <p>Descongestionante nasal, antialérgico....</p>
+                    <span>R$ 18,90</span>
+                    <button onclick="adicionarCarrinho('Xarope', 18.90)">Comprar</button>
+                </div>
+            </div>
+        </section>
+        <section class="produtos">
+            <div id="Cuidadospessoais" class="cuidadospessoais"><h2>Cuidados Pessoais</h2></div>
+            <div class="container">
+                <div class="produto" data-nome="Kit Gel Limpeza">
+                    <img src="img/kitgellimpeza.png" alt="Kit Gel Limpeza">
+                    <h3><a href="kitgellimpeza.html">Kit Actine Darrow Gel de Limpeza 140g + Gel de Limpeza 40g</a></h3>
+                    <p>Cuidados com a pele, combate acne e cravos e clareia marcas.</p>
+                    <span>R$ 44,99</span>
+                    <button onclick="adicionarCarrinho('Kit Gel Limpeza', 44.99)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Desodorante">
+                    <img src="img/desodorante.png" alt="Desodorante">
+                    <h3><a href="desodorante.html">Desodorante Antitranspirante Stick Creme Rexona Men 58g</a></h3>
+                    <p>Antitranspirante masculino em creme, 96h de proteção....</p>
+                    <span>R$ 26,90</span>
+                    <button onclick="adicionarCarrinho('Desodorante', 26.90)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Enxaguante Bocal">
+                    <img src="img/enxaguantebocal.png" alt="Enxaguante Bocal">
+                    <h3><a href="enxaguantebocal.html">Enxaguante Antisséptico Bucal Listerine Cool Mint Zero Álcool 250ml</a></h3>
+                    <p>Indicado para pessoas com sensibilidade nos dentes.</p>
+                    <span>R$ 16,79</span>
+                    <button onclick="adicionarCarrinho('Enxaguante Bocal', 16.79)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Óleo Finalizador">
+                    <img src="img/oleofinalizador.png" alt="Óleo Finalizador">
+                    <h3><a href="oleofinalizador.html">Óleo Finalizador Tresemmé 5 em 1 60ml</a></h3>
+                    <p>Alinha as pontas, recupera o brilho e restaura a maciez.</p>
+                    <span>R$ 31,99</span>
+                    <button onclick="adicionarCarrinho('Óleo Finalizador', 31.99)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Máscara Capilar">
+                    <img src="img/mascaracapilar.png" alt="Máscara Capilar">
+                    <h3><a href="mascaracapilar.html">Sebastian Professional Dark Oil - Máscara Capilar 500ml</a></h3>
+                    <p>Nutre profundamente sem adicionar peso aos fios.</p>
+                    <span>R$ 348,90</span>
+                    <button onclick="adicionarCarrinho('Máscara Capilar', 348.90)">Comprar</button>
+                </div>
+            </div>
+        </section>
+        <section class="produtos">
+            <div id="Vitaminas" class="vitaminas"><h2>Vitaminas</h2></div>
+            <div class="container">
+                <div class="produto" data-nome="Vitamina D">
+                    <img src="img/vitaminad.png" alt="Vitamina D">
+                    <h3><a href="vitaminad.html">Vitamina D 2.000UI C/30</a></h3>
+                    <p>Fortalece seu sistema imunológico e muscular</p>
+                    <span>R$ 15,19</span>
+                    <button onclick="adicionarCarrinho('Vitamina D', 15.19)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Polivitaminico Homem">
+                    <img src="img/Multivitaminico.png" alt="Polivitaminico Homem">
+                    <h3><a href="polivitaminco.html">Polivitamínico Homem Cabelos e Barbas Saudáveis C/60</a></h3>
+                    <p>Fortalece barbas e cabelos.</p>
+                    <span>R$ 29,90</span>
+                    <button onclick="adicionarCarrinho('Polivitaminico Homem', 29.90)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Centrotabs">
+                    <img src="img/centrotabs.png" alt="Centrotabs">
+                    <h3><a href="centrotabs.html">Vitamina Centrotabs Mulher C/60</a></h3>
+                    <p>Suplemento para saúde feminina...</p>
+                    <span>R$ 15,99</span>
+                    <button onclick="adicionarCarrinho('Centrotabs', 15.99)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Vitamina Kids">
+                    <img src="img/vitaminakids.png" alt="Vitamina Kids">
+                    <h3><a href="vitaminakids.html">Vitamina Kids C/60</a></h3>
+                    <p>Crescimento e desenvolvimento saudável.</p>
+                    <span>R$ 12,90</span>
+                    <button onclick="adicionarCarrinho('Vitamina Kids', 12.90)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Vitamina AZ">
+                    <img src="img/vitaminaaz.png" alt="Vitamina AZ">
+                    <h3><a href="vitaminaaz.html">Vitamina AZ C/60</a></h3>
+                    <p>Fortalecimento do sistema imunológico.</p>
+                    <span>R$ 13,90</span>
+                    <button onclick="adicionarCarrinho('Vitamina AZ', 13.90)">Comprar</button>
+                </div>
+            </div>
+        </section>
+        <section class="produtos">
+            <div id="Perfumes" class="perfumes"><h2>Perfumes</h2></div>
+            <div class="container">
+                <div class="produto" data-nome="Diesel Brave">
+                    <img src="img/dieselbrave.png" alt="Diesel Brave">
+                    <h3><a href="dieselbrave.html">Diesel Only The Brave Tattoo Eau de Toilette 125ml</a></h3>
+                    <p>Only The Brave Tattoo é moderno, autêntico e representa um símbolo de segurança e determinação.</p>
+                    <span>R$ 429,99</span>
+                    <button onclick="adicionarCarrinho('Diesel Brave', 429.99)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="David Beckham">
+                    <img src="img/davidbeckham.png" alt="David Beckham">
+                    <h3><a href="davidbeckham.html">David Beckham Homme Eau de Toilette 75ml</a></h3>
+                    <p>David Beckham Homme é uma fragrância masculina inspirada nos fortes valores pessoais de David.</p>
+                    <span>R$ 189,90</span>
+                    <button onclick="adicionarCarrinho('David Beckham', 189.90)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="CR7 Origins">
+                    <img src="img/cr7origins.png" alt="CR7 Origins">
+                    <h3><a href="cr7origins.html">Cristiano Ronaldo Origins Eau de Toilette 100ml</a></h3>
+                    <p>Autêntico e genuíno, é uma fragrância leve e sutil para aqueles que são apaixonados pela vida.</p>
+                    <span>R$ 396,90</span>
+                    <button onclick="adicionarCarrinho('CR7 Origins', 396.90)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Sabah Al Ward">
+                    <img src="img/sabahalward.png" alt="Sabah Al Ward">
+                    <h3><a href="sabahalward.html">Sabah Al Ward Al Wataniah Eau de Parfum 100ml</a></h3>
+                    <p>Possui um aroma que desperta mistério e desejo que exala feminilidade.</p>
+                    <span>R$ 219,90</span>
+                    <button onclick="adicionarCarrinho('Sabah Al Ward', 219.90)">Comprar</button>
+                </div>
+
+                <div class="produto" data-nome="Fakhar Gold">
+                    <img src="img/fakhargold.png" alt="Fakhar Gold">
+                    <h3><a href="fakhargold.html">Fakhar Gold Lattafa Eau de Parfum 100ml</a></h3>
+                    <p>Oferece uma experiência olfativa luxuosa e envolvente que seduz os sentidos instantaneamente.</p>
+                    <span>R$ 199,90</span>
+                    <button onclick="adicionarCarrinho('Fakhar Gold', 199.90)">Comprar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="carrinho" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharCarrinho()">&times;</span>
+            <h2>Carrinho de Compras</h2>
+            <ul id="itens-carrinho"></ul>
+            <p>Total: R$ <span id="total">0.00</span></p>
+            <button onclick="finalizarCompra()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Farmácia DrogaCruz - Todos os direitos reservados.</p>
+    </footer>
+     
+    <script src="banner.js"></script>
+    <script src="script.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
